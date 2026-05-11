@@ -1,65 +1,547 @@
 import Image from "next/image";
+import { ScrollReveal } from "./scroll-reveal";
+import { ThemeToggle } from "./theme-toggle";
+import { RoleCarousel } from "./role-carousel";
+import { MobileNav } from "./mobile-nav";
+
+const profile = {
+  name: "Rhonel Anthony L. Cortez",
+  role: "Fresh Computer Science Graduate",
+  location: "Iguig, Cagayan, Philippines",
+  email: "rhonelanthonycortez@gmail.com",
+  phone: "+639079204158",
+  phoneLabel: "+63 907 920 4158",
+  github: "https://github.com/Hit2310",
+  linkedin: "https://www.linkedin.com/in/rhonel-anthony-cortez",
+  resume: "/assets/Rhonel-Anthony-Cortez-Resume.pdf",
+};
+
+const skillGroups = [
+  {
+    title: "Languages",
+    skills: [
+      {
+        name: "Python",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      },
+      {
+        name: "Dart",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
+      },
+      {
+        name: "C#",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+      },
+      {
+        name: "PHP",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+      },
+      {
+        name: "JavaScript",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      },
+      {
+        name: "TypeScript",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      },
+      {
+        name: "Java",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      },
+      {
+        name: "HTML",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      },
+    ],
+  },
+  {
+    title: "Frameworks & Mobile",
+    skills: [
+      {
+        name: "Next.js",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      },
+      {
+        name: "Flutter",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+      },
+      {
+        name: "Ionic Angular",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg",
+      },
+    ],
+  },
+  {
+    title: "Databases & Cloud",
+    skills: [
+      {
+        name: "Firebase",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg",
+      },
+      { name: "SQL", fallbackIcon: "SQL" },
+    ],
+  },
+  {
+    title: "Tools",
+    skills: [
+      {
+        name: "Git",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      },
+      {
+        name: "GitHub",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+      },
+      {
+        name: "VS Code",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+      },
+      {
+        name: "XAMPP",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xampp/xampp-original.svg",
+      },
+      {
+        name: "Android Studio",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg",
+      },
+    ],
+  },
+  {
+    title: "AI & Vision",
+    skills: [
+      {
+        name: "OpenCV",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg",
+      },
+      { name: "YOLO", fallbackIcon: "YO" },
+    ],
+  },
+];
+
+const projects = [
+  {
+    name: "Records Management System",
+    type: "Web-based registrar office system",
+    description:
+      "A PHP and MySQL records platform built for registrar workflows, digitizing physical student records with authentication, role-based access, and fast search and filtering.",
+    stack: ["PHP", "MySQL", "CSS"],
+    status: "Private Office System",
+    proof: "Not deployed publicly",
+  },
+  {
+    name: "HireGround",
+    type: "Mobile Recruiting Platform",
+    description:
+      "A Flutter and Firebase app that connects job seekers and employers in Tuguegarao, with skill-based recommendations, an in-app CV generator, Cloudinary asset storage, and an employer dashboard.",
+    stack: ["Flutter", "Firebase", "Cloudinary"],
+    status: "Private Mobile App Project",
+    proof: "Demo available on request",
+  },
+  {
+    name: "StudyLense",
+    type: "AI Engagement Monitoring Prototype",
+    description:
+      "A computer vision prototype that detects student engagement and disengagement in classroom settings using labeled training data, OpenCV, and YOLO-based real-time detection.",
+    stack: ["Python", "OpenCV", "YOLO"],
+    status: "Academic Prototype",
+    proof: "Demo available on request",
+  },
+];
+
+const experience = [
+  {
+    title: "Registrar Programming and Office Intern",
+    org: "Cagayan State University - Andrews Campus",
+    date: "Dec 2025 - Feb 2026",
+    detail:
+      "Led development of a Records Management System, supported document workflows, managed student asset inventory across 4 departments, and assisted enrollment and student records operations.",
+  },
+  {
+    title: "Bachelor of Science in Computer Science",
+    org: "Cagayan State University - Carig Campus",
+    date: "Sept 2022 - May 2026",
+    detail:
+      "Graduating with Merit and a GWA of 92.32, with coursework and project work spanning software development, databases, mobile apps, and AI-assisted systems.",
+  },
+  {
+    title: "Project Developer",
+    org: "Academic and community-focused software projects",
+    date: "2024 - 2026",
+    detail:
+      "Built practical applications including a registrar records system, a mobile recruiting platform, and an AI-powered classroom engagement monitoring prototype.",
+  },
+];
+
+const highlights = [
+  "I build end-to-end applications across web, mobile, database, and cloud-backed workflows.",
+  "I focus on practical systems that solve real school, office, and community needs.",
+  "I bring hands-on experience with PHP, SQL, Flutter, Firebase, Python, OpenCV, and YOLO.",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="site-shell min-h-screen">
+      <ScrollReveal />
+      <div className="ambient-field" aria-hidden="true">
+        <span className="ambient-object ambient-object-1" data-label="&lt;/&gt;" />
+        <span className="ambient-object ambient-object-2" data-label="PHP" />
+        <span className="ambient-object ambient-object-3" data-label="SQL" />
+        <span className="ambient-object ambient-object-4" data-label="AI" />
+        <span className="ambient-object ambient-object-5" data-label="01" />
+        <span className="ambient-object ambient-object-6" data-label="fn" />
+        <span className="ambient-object ambient-object-7" data-label="C#" />
+      </div>
+      <header className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-5 sm:px-8">
+        <a className="font-semibold tracking-tight" href="#top">
+          {profile.name}
+        </a>
+        <div className="flex items-center gap-3">
+          <nav
+            className="site-nav hidden items-center gap-5 text-sm sm:flex"
+            aria-label="Main navigation"
+          >
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <MobileNav />
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <section
+        id="top"
+        data-reveal
+        className="mx-auto flex w-full max-w-6xl flex-col-reverse gap-10 px-5 pb-16 pt-8 sm:px-8 lg:grid lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:pt-16"
+      >
+        <div>
+          <p className="eyebrow mb-4 inline-flex rounded-md border px-3 py-1 text-sm font-medium">
+            Fresh Computer Science Graduate
           </p>
+          <h1 className="text-heading max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal sm:text-6xl lg:text-7xl">
+            Building practical software for real community needs.
+          </h1>
+          <p className="text-muted mt-6 max-w-2xl text-lg leading-8">
+            I am a fresh computer science graduate with experience building
+            end-to-end applications, from a PHP and SQL records management
+            system to a Flutter and Firebase recruiting platform.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              className="button-primary inline-flex h-12 items-center justify-center rounded-md px-5 text-sm font-semibold transition"
+              href={`mailto:${profile.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Email me
+            </a>
+            <a
+              className="button-secondary inline-flex h-12 items-center justify-center rounded-md border px-5 text-sm font-semibold transition"
+              href="#projects"
+            >
+              View projects
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        <div className="hero-panel relative min-h-[430px] overflow-hidden rounded-lg border p-5">
+          <div className="hero-panel-glow absolute inset-0" />
+          <div className="relative flex h-full min-h-[390px] flex-col justify-between">
+            <div className="hero-panel-meta flex items-center justify-between border-b pb-4 text-sm">
+              <span>Portfolio</span>
+              <span>{profile.location}</span>
+            </div>
+            <div className="py-8">
+              <div className="mb-6 flex justify-center">
+                <Image
+                  src="/assets/images/CORTEZ, RHONEL ANTHONY L.JPG"
+                  alt="Rhonel Anthony L. Cortez"
+                  width={120}
+                  height={120}
+                  className="h-32 w-32 rounded-lg border object-cover object-top"
+                  priority
+                />
+              </div>
+              <p className="hero-accent text-sm uppercase tracking-[0.18em] text-blue-500">
+                Available for Programming Roles
+              </p>
+              <p className="mt-3 text-3xl font-semibold leading-tight">
+                <RoleCarousel />
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {["Web Apps", "Mobile Apps", "AI Systems"].map((item) => (
+                <div
+                  className="hero-feature rounded-md border p-3 text-sm"
+                  key={item}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="surface-band border-y" data-reveal>
+        <div className="mx-auto grid max-w-6xl gap-5 px-5 py-8 sm:px-8 md:grid-cols-3">
+          {highlights.map((highlight) => (
+            <p className="text-muted text-base leading-7" key={highlight}>
+              {highlight}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="projects"
+        className="mx-auto max-w-6xl px-5 py-16 sm:px-8"
+        data-reveal
+      >
+        <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <div>
+            <p className="section-kicker text-sm font-semibold uppercase tracking-[0.18em]">
+              Selected work
+            </p>
+            <h2 className="text-heading mt-2 text-3xl font-semibold">
+              Notable Projects
+            </h2>
+          </div>
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            className="text-link text-sm font-semibold hover:underline"
+            href={`mailto:${profile.email}?subject=Project%20demo%20request`}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            Request a demo
           </a>
         </div>
-      </main>
-    </div>
+
+        <div className="grid gap-5 md:grid-cols-3">
+          {projects.map((project, index) => (
+            <article
+              className="project-card rounded-lg border p-5 shadow-sm"
+              key={project.name}
+              data-reveal
+            >
+              <div className="project-icon mb-5 flex h-36 items-center justify-center rounded-md">
+                <Image
+                  src={index === 1 ? "/window.svg" : "/globe.svg"}
+                  alt=""
+                  width={58}
+                  height={58}
+                  aria-hidden="true"
+                />
+              </div>
+              <p className="section-kicker text-sm font-medium">
+                {project.type}
+              </p>
+              <h3 className="mt-2 text-xl font-semibold">{project.name}</h3>
+              <p className="text-muted mt-3 min-h-28 text-sm leading-6">
+                {project.description}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.stack.map((tech) => (
+                  <span
+                    className="tech-chip rounded-md px-2.5 py-1 text-xs font-medium"
+                    key={tech}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="project-evidence mt-5 flex flex-col gap-2">
+                <span>{project.status}</span>
+                <span>{project.proof}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="skills"
+        className="skills-band border-y px-5 py-12 sm:px-8"
+        data-reveal
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="skills-intro">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#f2c979]">
+              Skills
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold">
+              A practical stack for web, mobile, and AI prototypes.
+            </h2>
+            <p className="mt-3 leading-7 text-white/72">
+              My strongest tools come from building web systems, mobile apps,
+              database-backed workflows, and computer vision prototypes.
+            </p>
+            <div className="skill-summary mt-5 grid grid-cols-3 gap-2">
+              <div>
+                <strong>19+</strong>
+                <span>tools</span>
+              </div>
+              <div>
+                <strong>3</strong>
+                <span>project areas</span>
+              </div>
+              <div>
+                <strong>Full</strong>
+                <span>stack</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="skill-groups mt-6 grid gap-3 md:grid-cols-6">
+            {skillGroups.map((group) => (
+              <article
+                className={`skill-group skill-group-${group.title
+                  .toLowerCase()
+                  .replaceAll(" & ", "-")
+                  .replaceAll(" ", "-")}`}
+                key={group.title}
+                data-reveal
+              >
+                <h3>{group.title}</h3>
+                <div className="skill-grid">
+                  {group.skills.map((skill) => (
+                    <div className="skill-item" key={skill.name}>
+                      <span className="skill-icon">
+                        {skill.iconSrc ? (
+                          <Image
+                            src={skill.iconSrc}
+                            alt=""
+                            width={28}
+                            height={28}
+                            unoptimized
+                          />
+                        ) : (
+                          <span className="skill-fallback-icon">
+                            {skill.fallbackIcon}
+                          </span>
+                        )}
+                      </span>
+                      <span>{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="experience"
+        className="mx-auto grid max-w-6xl gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[0.7fr_1.3fr]"
+        data-reveal
+      >
+        <div>
+          <p className="section-kicker text-sm font-semibold uppercase tracking-[0.18em]">
+            Background
+          </p>
+          <h2 className="text-heading mt-2 text-3xl font-semibold">
+            Education and experience
+          </h2>
+        </div>
+        <div className="space-y-4">
+          {experience.map((item) => (
+            <article
+              className="project-card rounded-lg border p-5"
+              key={`${item.title}-${item.org}`}
+              data-reveal
+            >
+              <div className="flex flex-col justify-between gap-2 sm:flex-row">
+                <div>
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <p className="section-kicker text-sm">{item.org}</p>
+                </div>
+                <p className="text-subtle text-sm font-medium">{item.date}</p>
+              </div>
+              <p className="text-muted mt-3 leading-7">{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        className="contact-section px-5 py-16 sm:px-8"
+        data-reveal
+      >
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <div>
+            <p className="section-kicker text-sm font-semibold uppercase tracking-[0.18em]">
+              Contact
+            </p>
+            <h2 className="text-heading mt-2 text-3xl font-semibold">
+              Let&apos;s build what comes next.
+            </h2>
+            <p className="text-muted mt-4 max-w-xl leading-7">
+              I am open to junior software engineering, web development, mobile
+              development, and internship-to-full-time opportunities.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <a className="contact-link" href={`mailto:${profile.email}`} target="_blank" rel="noopener noreferrer">
+              {profile.email}
+            </a>
+            <a className="contact-link" href={`tel:${profile.phone}`} target="_blank" rel="noopener noreferrer">
+              {profile.phoneLabel}
+            </a>
+            <a
+              className="contact-link"
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a
+              className="contact-link"
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+            <a className="contact-link" href={profile.resume} target="_blank" rel="noopener noreferrer">
+              Resume
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto flex w-full max-w-6xl justify-center px-5 py-8 sm:px-8">
+        <a
+          href="#top"
+          className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium transition hover:bg-blue-500/10"
+        >
+          ↑ Back to top
+        </a>
+      </div>
+    </main>
   );
 }
