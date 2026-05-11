@@ -3,8 +3,10 @@
 import { useState } from "react";
 
 const navLinks = [
+  { label: "Home", href: "#top" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
+  { label: "GitHub", href: "#github" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
@@ -42,7 +44,7 @@ export function MobileNav() {
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 right-0 top-16 z-50 border-b bg-background/95 backdrop-blur-sm sm:hidden">
+        <div className="mobile-nav-panel absolute left-0 right-0 top-full z-50 border-b sm:hidden">
           <nav className="flex flex-col gap-4 px-5 py-6" aria-label="Mobile navigation">
             {navLinks.map((link) => (
               <a

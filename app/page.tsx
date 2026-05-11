@@ -3,6 +3,7 @@ import { ScrollReveal } from "./scroll-reveal";
 import { ThemeToggle } from "./theme-toggle";
 import { RoleCarousel } from "./role-carousel";
 import { MobileNav } from "./mobile-nav";
+import { GitHubActivity } from "./github-activity";
 
 const profile = {
   name: "Rhonel Anthony L. Cortez",
@@ -145,6 +146,10 @@ const projects = [
   {
     name: "Records Management System",
     type: "Web-based registrar office system",
+    imageSrc: "/assets/images/RMS.png",
+    imageAlt: "Records Management System dashboard screenshot",
+    imageWidth: 1897,
+    imageHeight: 957,
     description:
       "A PHP and MySQL records platform built for registrar workflows, digitizing physical student records with authentication, role-based access, and fast search and filtering.",
     stack: ["PHP", "MySQL", "CSS"],
@@ -154,6 +159,10 @@ const projects = [
   {
     name: "HireGround",
     type: "Mobile Recruiting Platform",
+    imageSrc: "/assets/images/HireGround.png",
+    imageAlt: "HireGround mobile recruiting platform screenshot",
+    imageWidth: 1897,
+    imageHeight: 901,
     description:
       "A Flutter and Firebase app that connects job seekers and employers in Tuguegarao, with skill-based recommendations, an in-app CV generator, Cloudinary asset storage, and an employer dashboard.",
     stack: ["Flutter", "Firebase", "Cloudinary"],
@@ -166,15 +175,15 @@ const projects = [
     description:
       "A computer vision prototype that detects student engagement and disengagement in classroom settings using labeled training data, OpenCV, and YOLO-based real-time detection.",
     stack: ["Python", "OpenCV", "YOLO"],
-    status: "Academic Prototype",
+    status: "Academic prototype in progress",
     proof: "Demo available on request",
   },
 ];
 
 const experience = [
   {
-    title: "Registrar Programming and Office Intern",
-    org: "Cagayan State University - Andrews Campus",
+    title: "Programming and Office Intern",
+    org: "Cagayan State University - Andrews Campus Registrar's Office",
     date: "Dec 2025 - Feb 2026",
     detail:
       "Led development of a Records Management System, supported document workflows, managed student asset inventory across 4 departments, and assisted enrollment and student records operations.",
@@ -214,22 +223,26 @@ export default function Home() {
         <span className="ambient-object ambient-object-6" data-label="fn" />
         <span className="ambient-object ambient-object-7" data-label="C#" />
       </div>
-      <header className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-5 sm:px-8">
-        <a className="font-semibold tracking-tight" href="#top">
-          {profile.name}
-        </a>
-        <div className="flex items-center gap-3">
-          <nav
-            className="site-nav hidden items-center gap-5 text-sm sm:flex"
-            aria-label="Main navigation"
-          >
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <MobileNav />
-          <ThemeToggle />
+      <header className="site-header fixed left-0 right-0 top-0 z-50">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+          <a className="font-semibold tracking-tight" href="#top">
+            {profile.name}
+          </a>
+          <div className="flex items-center gap-3">
+            <nav
+              className="site-nav hidden items-center gap-5 text-sm sm:flex"
+              aria-label="Main navigation"
+            >
+              <a href="#top">Home</a>
+              <a href="#projects">Projects</a>
+              <a href="#skills">Skills</a>
+              <a href="#github">GitHub</a>
+              <a href="#experience">Experience</a>
+              <a href="#contact">Contact</a>
+            </nav>
+            <MobileNav />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -240,13 +253,13 @@ export default function Home() {
       >
         <div>
           <p className="eyebrow mb-4 inline-flex rounded-md border px-3 py-1 text-sm font-medium">
-            Fresh Computer Science Graduate
+            Computer Science Graduate
           </p>
           <h1 className="text-heading max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal sm:text-6xl lg:text-7xl">
             Building practical software for real community needs.
           </h1>
           <p className="text-muted mt-6 max-w-2xl text-lg leading-8">
-            I am a fresh computer science graduate with experience building
+            I am a computer science graduate with experience building
             end-to-end applications, from a PHP and SQL records management
             system to a Flutter and Firebase recruiting platform.
           </p>
@@ -346,14 +359,38 @@ export default function Home() {
               key={project.name}
               data-reveal
             >
-              <div className="project-icon mb-5 flex h-36 items-center justify-center rounded-md">
-                <Image
-                  src={index === 1 ? "/window.svg" : "/globe.svg"}
-                  alt=""
-                  width={58}
-                  height={58}
-                  aria-hidden="true"
-                />
+              <div className="project-icon mb-5 flex h-36 items-center justify-center overflow-hidden rounded-md">
+                {project.imageSrc ? (
+                  <Image
+                    src={project.imageSrc}
+                    alt={project.imageAlt}
+                    width={project.imageWidth}
+                    height={project.imageHeight}
+                    className="h-full w-full object-cover object-top"
+                  />
+                ) : project.name === "StudyLense" ? (
+                  <div className="coming-soon-preview">
+                    <div className="study-lense-visual" aria-hidden="true">
+                      <span className="study-lense-frame" />
+                      <span className="study-lense-scan" />
+                      <span className="study-lense-dot study-lense-dot-1" />
+                      <span className="study-lense-dot study-lense-dot-2" />
+                      <span className="study-lense-dot study-lense-dot-3" />
+                    </div>
+                    <div className="coming-soon-badge">
+                      <strong>StudyLense</strong>
+                      <span>Coming soon</span>
+                    </div>
+                  </div>
+                ) : (
+                  <Image
+                    src={index === 1 ? "/window.svg" : "/globe.svg"}
+                    alt=""
+                    width={58}
+                    height={58}
+                    aria-hidden="true"
+                  />
+                )}
               </div>
               <p className="section-kicker text-sm font-medium">
                 {project.type}
@@ -452,6 +489,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <GitHubActivity />
 
       <section
         id="experience"
