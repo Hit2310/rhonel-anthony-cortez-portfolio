@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Rhonel Anthony L. Cortez | Software Engineer Portfolio",
   description:
-    "Portfolio for Rhonel Anthony L. Cortez, a fresh computer science graduate focused on web, mobile, database, and AI-assisted software projects.",
+    "Portfolio for Rhonel Anthony L. Cortez, a computer science graduate and freelance developer building full-stack web and mobile applications, from production client systems to AI-assisted prototypes.",
 };
 
 export default function RootLayout({

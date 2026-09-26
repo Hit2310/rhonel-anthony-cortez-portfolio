@@ -43,7 +43,7 @@ const contributionCalendarQuery = `
 const statsCards = [
   {
     alt: "Hit2310 GitHub stats",
-    src: "https://github-readme-stats-hg7q04uyk-hit2310s-projects.vercel.app/api?username=Hit2310&show_icons=true&hide_border=true&theme=transparent",
+    src: "https://github-readme-stats-beta-five-46.vercel.app/api?username=Hit2310&show_icons=true&hide_border=true&theme=transparent",
   },
   {
     alt: "Hit2310 GitHub streak stats",
@@ -51,7 +51,7 @@ const statsCards = [
   },
   {
     alt: "Hit2310 top programming languages",
-    src: "https://github-readme-stats-hg7q04uyk-hit2310s-projects.vercel.app/api/top-langs?username=Hit2310&layout=compact&langs_count=8&hide_border=true&theme=transparent",
+    src: "https://github-readme-stats-beta-five-46.vercel.app/api/top-langs?username=Hit2310&layout=compact&langs_count=8&hide_border=true&theme=transparent",
   },
 ];
 

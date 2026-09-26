@@ -1134,6 +1134,10 @@ html[data-theme="dark"] .hero-panel-glow {
   border-color: var(--accent-strong);
 }
 
+.project-card-featured:hover {
+  transform: translateY(-4px);
+}
+
 /* Tech Chips - Rotating Hover Effect */
 .tech-chip {
   transition:

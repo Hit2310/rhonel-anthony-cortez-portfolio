@@ -7,7 +7,7 @@ import { GitHubActivity } from "./github-activity";
 
 const profile = {
   name: "Rhonel Anthony L. Cortez",
-  role: "Fresh Computer Science Graduate",
+  role: "Computer Science Graduate and Freelance Developer",
   location: "Iguig, Cagayan, Philippines",
   email: "rhonelanthonycortez@gmail.com",
   phone: "+639079204158",
@@ -82,9 +82,14 @@ const skillGroups = [
           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
       },
       {
-        name: "Ionic Angular",
+        name: "Ionic",
         iconSrc:
           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg",
+      },
+      {
+        name: "Angular",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg",
       },
     ],
   },
@@ -96,7 +101,21 @@ const skillGroups = [
         iconSrc:
           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg",
       },
-      { name: "SQL", fallbackIcon: "SQL" },
+      {
+        name: "Supabase",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+      },
+      {
+        name: "PostgreSQL",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      },
+      {
+        name: "MySQL",
+        iconSrc:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      },
     ],
   },
   {
@@ -144,6 +163,20 @@ const skillGroups = [
 
 const projects = [
   {
+    name: "GUTVita (LZCAS)",
+    type: "Inventory, POS, and MLM System",
+    featured: true,
+    imageSrc: "/assets/images/LZCAS.png",
+    imageAlt: "GUTVita admin dashboard screenshot",
+    imageWidth: 1919,
+    imageHeight: 1013,
+    description:
+      "A cross-platform point-of-sale, inventory, and MLM membership system for a multi-branch business, shipped to Android and Windows. Access for six user roles is enforced at three layers: client route guards, Postgres row-level security, and admin-verified Edge Functions. A trigger-driven commission engine locks bonuses at purchase time, caps referral bonuses by package tier, and blocks withdrawals that would overdraw an account.",
+    stack: ["Flutter", "Supabase", "PostgreSQL"],
+    status: "Client system in production (v1.5.1)",
+    proof: "Demo available on request",
+  },
+  {
     name: "Records Management System",
     type: "Web-based registrar office system",
     imageSrc: "/assets/images/RMS.png",
@@ -164,7 +197,7 @@ const projects = [
     imageWidth: 1897,
     imageHeight: 901,
     description:
-      "A Flutter and Firebase app that connects job seekers and employers in Tuguegarao, with skill-based recommendations, an in-app CV generator, Cloudinary asset storage, and an employer dashboard.",
+      "A Flutter and Firebase app that connects job seekers and employers in Tuguegarao, with hybrid recommendation algorithms for personalized job matching, an in-app CV generator, Cloudinary asset storage, and an employer dashboard.",
     stack: ["Flutter", "Firebase", "Cloudinary"],
     status: "Private Mobile App Project",
     proof: "Demo available on request",
@@ -182,33 +215,36 @@ const projects = [
 
 const experience = [
   {
+    title: "Freelance Software Developer",
+    org: "Self-employed · Iguig, Cagayan",
+    date: "June 2026 - Present",
+    detail:
+      "Co-developed GUTVita, a production point-of-sale, inventory, and MLM membership app built with Flutter and Supabase and deployed to Android and Windows, working on a team codebase and managing releases.",
+  },
+  {
     title: "Programming and Office Intern",
     org: "Cagayan State University - Andrews Campus Registrar's Office",
     date: "Dec 2025 - Feb 2026",
     detail:
-      "Led development of a Records Management System, supported document workflows, managed student asset inventory across 4 departments, and assisted enrollment and student records operations.",
+      "Led development of a Records Management System that streamlined document workflows and reduced manual processing time, managed student asset inventory across 4 departments, and supported enrollment and student records operations.",
   },
   {
     title: "Bachelor of Science in Computer Science",
     org: "Cagayan State University - Carig Campus",
     date: "Sept 2022 - May 2026",
     detail:
-      "Graduating with Merit and a GWA of 92.32, with coursework and project work spanning software development, databases, mobile apps, and AI-assisted systems.",
-  },
-  {
-    title: "Project Developer",
-    org: "Academic and community-focused software projects",
-    date: "2024 - 2026",
-    detail:
-      "Built practical applications including a registrar records system, a mobile recruiting platform, and an AI-powered classroom engagement monitoring prototype.",
+      "Graduated with Merit and a GWA of 92.32 as a consecutive Dean's Lister, with coursework and project work spanning software development, databases, mobile apps, and AI-assisted systems.",
   },
 ];
 
 const highlights = [
-  "I build end-to-end applications across web, mobile, database, and cloud-backed workflows.",
-  "I focus on practical systems that solve real school, office, and community needs.",
-  "I bring hands-on experience with PHP, SQL, Flutter, Firebase, Python, OpenCV, and YOLO.",
+  "I build full-stack web and mobile applications, from database design to deployment.",
+  "I have shipped production software for real clients and turn client requirements into practical, working systems.",
+  "I work across Flutter, Supabase, PostgreSQL, Firebase, PHP, and Python, including OpenCV and YOLO for computer vision.",
 ];
+
+const featuredProject = projects.find((project) => project.featured);
+const otherProjects = projects.filter((project) => !project.featured);
 
 export default function Home() {
   return (
@@ -253,15 +289,16 @@ export default function Home() {
       >
         <div>
           <p className="eyebrow mb-4 inline-flex rounded-md border px-3 py-1 text-sm font-medium">
-            Computer Science Graduate
+            Computer Science Graduate · Freelance Developer
           </p>
           <h1 className="text-heading max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal sm:text-6xl lg:text-7xl">
-            Building practical software for real community needs.
+            Building practical software for real clients and communities.
           </h1>
           <p className="text-muted mt-6 max-w-2xl text-lg leading-8">
-            I am a computer science graduate with experience building
-            end-to-end applications, from a PHP and SQL records management
-            system to a Flutter and Firebase recruiting platform.
+            I am a computer science graduate and freelance developer who has
+            shipped production software for real clients, from a Flutter and
+            Supabase point-of-sale system to a PHP records platform for a
+            university registrar.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
@@ -352,8 +389,51 @@ export default function Home() {
           </a>
         </div>
 
+        {featuredProject && (
+          <article
+            className="project-card project-card-featured mb-5 rounded-lg border p-5 shadow-sm lg:grid lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-8 lg:p-6"
+            data-reveal
+          >
+            <div className="project-icon mb-5 overflow-hidden rounded-md lg:mb-0">
+              <Image
+                src={featuredProject.imageSrc!}
+                alt={featuredProject.imageAlt!}
+                width={featuredProject.imageWidth}
+                height={featuredProject.imageHeight}
+                className="h-auto w-full"
+                sizes="(min-width: 1024px) 640px, 100vw"
+              />
+            </div>
+            <div>
+              <p className="section-kicker text-sm font-medium">
+                Featured · {featuredProject.type}
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold">
+                {featuredProject.name}
+              </h3>
+              <p className="text-muted mt-3 text-sm leading-6 sm:text-base sm:leading-7">
+                {featuredProject.description}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {featuredProject.stack.map((tech) => (
+                  <span
+                    className="tech-chip rounded-md px-2.5 py-1 text-xs font-medium"
+                    key={tech}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="project-evidence mt-5 flex flex-col gap-2">
+                <span>{featuredProject.status}</span>
+                <span>{featuredProject.proof}</span>
+              </div>
+            </div>
+          </article>
+        )}
+
         <div className="grid gap-5 md:grid-cols-3">
-          {projects.map((project, index) => (
+          {otherProjects.map((project, index) => (
             <article
               className="project-card rounded-lg border p-5 shadow-sm"
               key={project.name}
@@ -539,8 +619,8 @@ export default function Home() {
               Let&apos;s build what comes next.
             </h2>
             <p className="text-muted mt-4 max-w-xl leading-7">
-              I am open to junior software engineering, web development, mobile
-              development, and internship-to-full-time opportunities.
+              I am open to junior software engineering, web development, and
+              mobile development roles, as well as freelance projects.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
